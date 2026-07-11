@@ -1,0 +1,16 @@
+.file-explorer {
+    color: #f4f0f0;
+    background-color: #232328;
+    height: 100vh;
+}   
+
+.file-explorer div {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.file-explorer div:hover {
+    background-color: #e2e2e2;
+    color: #000;
+}
