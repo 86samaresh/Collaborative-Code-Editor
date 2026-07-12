@@ -7,7 +7,7 @@ import Console from "../console/console";
 
 import "./layout.css";
 
-const files = [
+const initFiles = [
     {
         name: "App.jsx",
         content: 'function App() {\n  return <h1>Hello, World!</h1>;\n}'
@@ -36,7 +36,8 @@ const files = [
 ];
 
 export default function Layouts(){
-    const [selectedFile, setSelectedFile] = useState(files[0]);
+    const [files,setFiles]=useState(initFiles);
+    const [selectedFile, setSelectedFile] = useState(initFiles[0]);
     return(
         <div className="layout">
             <div className="fe_sidebar left">
@@ -50,7 +51,10 @@ export default function Layouts(){
             <div className="center">
                 <div className="editor background">
                     <CodeEditor
+                        files={files}
+                        setfiles={setFiles}
                         selectedFile={selectedFile}
+                        setSelectedFile={setSelectedFile}
                     />
                 </div>
 
