@@ -38,6 +38,8 @@ const initFiles = [
 export default function Layouts(){
     const [files,setFiles]=useState(initFiles);
     const [selectedFile, setSelectedFile] = useState(initFiles[0]);
+    const [ots,sots]=useState([initFiles[0]]);
+
     return(
         <div className="layout">
             <div className="fe_sidebar left">
@@ -45,6 +47,9 @@ export default function Layouts(){
                     files={files}
                     selectedFile={selectedFile}
                     setSelectedFile={setSelectedFile}
+                    ots={ots}
+                    setots={sots}   //set open tabs
+
                 />
             </div>
 
@@ -55,6 +60,9 @@ export default function Layouts(){
                         setfiles={setFiles}
                         selectedFile={selectedFile}
                         setSelectedFile={setSelectedFile}
+                        ots={ots}
+                        setots={sots}
+                        
                     />
                 </div>
 
