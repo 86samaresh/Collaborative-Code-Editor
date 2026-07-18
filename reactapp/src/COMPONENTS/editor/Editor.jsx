@@ -6,10 +6,17 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
 
     function hcloseclk(e,tab){
         e.stopPropagation();
-
-        const updttabs=ots.filter((t)=>{
+        let index=-1;
+        const updttabs=ots.filter((t,i)=>{
+            if(tab.name===t.name){
+                index=i;
+            }
             return t.name!==tab.name;
         })
+        if(tab.name===selectedFile.name){
+        setSelectedFile(updttabs[index] || updttabs[index-1] || null);}
+
+
         setots(updttabs);
     }
 
@@ -32,29 +39,42 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
             <div className="tabs">
                 {ots.map((tab)=>(
                     <div
-                    className={
-                        selectedFile.name===tab.name
-                        ?"tab active-tab"
-                        :"tab"
-                    }
-                    key={tab.name}
-                    onClick={()=>setSelectedFile(tab)}
+                        className={
+                            selectedFile.name===tab.name
+                            ?"tab active-tab"
+                            :"tab"
+                        }
+                        key={tab.name}
+                        onClick={()=>setSelectedFile(tab)}
                     >
                         <span>{tab.name}</span>
                         <span className="closebtn" onClick={(e)=>{hcloseclk(e,tab)}}>x</span>
                     </div>
                 ))}
+                <div className="new-tabs">create file</div>
             </div>
 
             <div className="editor-body">
-                <Editor
-                    height="50vh"
-                    defaultLanguage="javascript"
-                    value={selectedFile.content}
-                    onChange={handleChange}
-                    theme="vs-dark"
+                {
+                selectedFile?
+                    <Editor
+                        height="50vh"
+                        defaultLanguage="javascript"
+                        value={selectedFile.content}
+                        onChange={handleChange}
+                        theme="vs-dark"
 
-                />
+                    />
+                :
+                    <Editor
+                        height="50vh"
+                        defaultLanguage="javascript"
+                        value="new file, enter code here..."
+                        onChange={handleChange}
+                        theme="vs-dark"
+
+                    />
+                }
             </div>
         </div>
     )

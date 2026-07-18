@@ -1,6 +1,7 @@
 .tabs{
     display: flex;
     cursor: pointer;
+    height: 25px;
     background-color: #232328;
 }
 .tabs div{
