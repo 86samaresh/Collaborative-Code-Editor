@@ -40,6 +40,30 @@ export default function Layouts(){
     const [selectedFile, setSelectedFile] = useState(initFiles[0]);
     const [ots,sots]=useState([initFiles[0]]);
 
+    function handleNewFile(){
+
+        let max=0;
+
+        files.forEach((file)=>{
+            if(file.name.startsWith("untitled"))
+            {
+                const num=Number(
+                    file.name.replace("untitled","").replace(".txt","")
+                )
+                if(num > max){
+                    max=num;
+                }
+            }
+        })
+        const newFile={
+            name:`untitled${max+1}.txt`,
+            content:""
+        }
+        setFiles([...files,newFile])
+        sots([...ots,newFile])
+        setSelectedFile(newFile)
+    }
+
     return(
         <div className="layout">
             <div className="fe_sidebar left">
@@ -62,6 +86,7 @@ export default function Layouts(){
                         setSelectedFile={setSelectedFile}
                         ots={ots}
                         setots={sots}
+                        hnf={handleNewFile}
                         
                     />
                 </div>

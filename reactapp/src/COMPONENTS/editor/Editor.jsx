@@ -2,7 +2,7 @@ import Editor from "@monaco-editor/react";
 import "./editor.css";
 import "../main_layout/Layout.css";
 
-export default function CodeEditor({files, selectedFile, setfiles, setSelectedFile,ots,setots}){
+export default function CodeEditor({files, selectedFile, setfiles, setSelectedFile,ots,setots,hnf}){
 
     function hcloseclk(e,tab){
         e.stopPropagation();
@@ -51,7 +51,9 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
                         <span className="closebtn" onClick={(e)=>{hcloseclk(e,tab)}}>x</span>
                     </div>
                 ))}
-                <div className="new-tabs">create file</div>
+                <div className="new-tabs" onClick={hnf}>
+                    +
+                </div>
             </div>
 
             <div className="editor-body">
@@ -66,14 +68,11 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
 
                     />
                 :
-                    <Editor
-                        height="50vh"
-                        defaultLanguage="javascript"
-                        value="new file, enter code here..."
-                        onChange={handleChange}
-                        theme="vs-dark"
-
-                    />
+                    <div className="emt-editor">
+                        <h2>No file open</h2>
+                        <p>Create a new file using the <strong>+</strong> button above or open a file
+                            from the File Explorer on the left.</p>
+                    </div>
                 }
             </div>
         </div>
