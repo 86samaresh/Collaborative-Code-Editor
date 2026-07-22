@@ -1,3 +1,5 @@
+// editor.jsx
+
 import Editor from "@monaco-editor/react";
 import "./editor.css";
 import "../main_layout/Layout.css";
@@ -35,7 +37,7 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
     }   
     return(
         <div className="editor">
-            
+{/* editor header ,,,,,tabs */}
             <div className="tabs">
                 {ots.map((tab)=>(
                     <div
@@ -56,11 +58,11 @@ export default function CodeEditor({files, selectedFile, setfiles, setSelectedFi
                 </div>
             </div>
 
+{/* editor body */}
             <div className="editor-body">
                 {
                 selectedFile?
                     <Editor
-                        height="50vh"
                         defaultLanguage="javascript"
                         value={selectedFile.content}
                         onChange={handleChange}

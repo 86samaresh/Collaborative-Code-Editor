@@ -1,3 +1,5 @@
+/* editor.css */
+
 .tabs{
     display: flex;
     cursor: pointer;
@@ -27,6 +29,14 @@
     cursor: pointer;
 }
 
+.editor{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.editor-body{
+    flex:1
+}
 .emt-editor{
     display: flex;
     flex-direction: column;

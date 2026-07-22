@@ -1,8 +1,15 @@
+/*explorer.css */
+
 .file-explorer {
     color: #f4f0f0;
     background-color: #232328;
-    height: 100vh;
-}   
+    height: 100%;
+    border:#0071fc solid .3px;
+} 
+
+.file-explorer h {
+    border: #0071fc;
+}
 
 .file-explorer div {
     padding: 10px;
